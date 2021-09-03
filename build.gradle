@@ -1,0 +1,52 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.dio'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+//	Spring Boot Starter Web
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.5.4'
+//	Spring Boot Starter JPA
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.5.4'
+	//  Sem implementação o JPA dá erro na compilação
+//	Banco de dados H2
+	// Com TestImplementation dava erro no h2. Então mudei para implementation.
+//	implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+//	Banco de Dados MySQL
+	//implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.26'
+	runtimeOnly 'mysql:mysql-connector-java'
+//	Spring Boot Dev Tools
+	developmentOnly group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.5.4'
+//	Jackson DataFormat, Conversor de JSON
+	compileOnly group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.13.0-rc2'
+//	Lombok
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+//	Swagger, Swagger2 e Bean Validator
+	implementation "io.springfox:springfox-swagger2:2.7.0"
+	implementation "io.springfox:springfox-swagger-ui:2.7.0"
+//	Hibernate Envers e Hibernate Validator
+	implementation group: 'org.hibernate.orm', name: 'hibernate-envers', version: '6.0.0.Alpha9'
+	implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '7.0.1.Final'
+	implementation group: 'org.hibernate.orm', name: 'hibernate-core', version: '6.0.0.Alpha9'
+
+
+
+
+
+}
+
+test {
+	useJUnitPlatform()
+}
